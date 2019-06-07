@@ -1,0 +1,103 @@
+void LCD_Init(void)
+{
+	//CS0=0;
+	
+	RST=1;  
+	Delay(100);
+	
+	RST=0;
+	Delay(800);
+
+	RST=1;
+	Delay(800);
+
+//--------------Start Initial Sequence--------------//
+	WriteComm(0x0001);WriteData(0x0000); // set SS and SM bit
+	WriteComm(0x0003);WriteData(0x1030); // set GRAM write direction and BGR=1.
+	WriteComm(0x0060);WriteData(0x2700); // Gate Scan Line
+	
+	WriteComm(0x0002);WriteData(0x0700);// set 1 line inversion
+	WriteComm(0x0004);WriteData(0x0000);// Resize register
+	WriteComm(0x0008);WriteData(0x0207);// set the back porch and front porch
+	WriteComm(0x0009);WriteData(0x0000);// set non-display area refresh cycle ISC[3:0]
+	WriteComm(0x000A);WriteData(0x0000);// FMARK function
+	WriteComm(0x000C);WriteData(0x0000);// RGB interface setting
+	WriteComm(0x000D);WriteData(0x0000);// Frame marker Position
+	WriteComm(0x000F);WriteData(0x0000);// RGB interface polarity
+	
+	//-------------Power On sequence------------//
+	WriteComm(0x0010);WriteData(0x0000);// SAP, BT[3:0], AP, DSTB, SLP, STB
+	WriteComm(0x0011);WriteData(0x0007);// DC1[2:0], DC0[2:0], VC[2:0]
+	WriteComm(0x0012);WriteData(0x0000);// VREG1OUT voltage
+	WriteComm(0x0013);WriteData(0x0000);// VDV[4:0] for VCOM amplitude
+	WriteComm(0x0007);WriteData(0x0001);
+	Delay(200); // Dis-charge capacitor power voltage
+	
+	WriteComm(0x0010);WriteData(0x1490);// SAP, BT[3:0], AP, DSTB, SLP, STB
+	WriteComm(0x0011);WriteData(0x0227);// DC1[2:0], DC0[2:0], VC[2:0]
+	Delay(50); // Delay 50ms
+	
+	WriteComm(0x0012);WriteData(0x0019);// Internal reference voltage= Vci;
+	Delay(50); // Delay 50ms
+	
+	WriteComm(0x0013);WriteData(0x1000);// Set VDV[4:0] for VCOM amplitude
+	WriteComm(0x0029);WriteData(0x0013);// Set VCM[5:0] for VCOMH
+	WriteComm(0x002B);WriteData(0x000C);// Set Frame Rate
+	Delay(50); // Delay 50ms
+	
+	WriteComm(0x0020);WriteData(0x0000);// GRAM horizontal Address
+	WriteComm(0x0021);WriteData(0x0000);// GRAM Vertical Address
+	
+	// ----------- Adjust the Gamma Curve ----------//
+	WriteComm(0x0030);WriteData(0x0000);
+	WriteComm(0x0031);WriteData(0x0707);
+	WriteComm(0x0032);WriteData(0x0307);
+	WriteComm(0x0035);WriteData(0x0200);
+	WriteComm(0x0036);WriteData(0x0008);
+	WriteComm(0x0037);WriteData(0x0004);
+	WriteComm(0x0038);WriteData(0x0000);
+	WriteComm(0x0039);WriteData(0x0707);
+	WriteComm(0x003C);WriteData(0x0002);
+	WriteComm(0x003D);WriteData(0x0804);
+	
+	//------------------ Set GRAM area ---------------//
+	WriteComm(0x0050);WriteData(0x0000);// Horizontal GRAM Start Address
+	WriteComm(0x0051);WriteData(0x00EF);// Horizontal GRAM End Address
+	WriteComm(0x0052);WriteData(0x0000);// Vertical GRAM Start Address
+	WriteComm(0x0053);WriteData(0x013F);// Vertical GRAM Start Address
+	WriteComm(0x0061);WriteData(0x0000);// NDL,VLE, REV
+	
+	//-------------- Partial Display Control ---------//
+	WriteComm(0x0080);WriteData(0x0000);
+	WriteComm(0x0081);WriteData(0x0000);
+	WriteComm(0x0082);WriteData(0x0000);
+	WriteComm(0x0083);WriteData(0x0000);
+	WriteComm(0x0084);WriteData(0x0000);
+	WriteComm(0x0085);WriteData(0x0000);
+	
+	//-------------- Panel Control -------------------//
+	WriteComm(0x0090);WriteData(0x0010);
+	WriteComm(0x0092);WriteData(0x0600);
+	WriteComm(0x0007);WriteData(0x0133);// 262K color and display ON
+
+}
+
+void BlockWrite(unsigned int Xstart,unsigned int Xend,unsigned int Ystart,unsigned int Yend) reentrant
+{
+
+	//ILI9328
+
+	WriteComm(0x0050);WriteData(Xstart);
+	WriteComm(0x0051);WriteData(Xend);	
+
+	WriteComm(0x0052);WriteData(Ystart);    
+	WriteComm(0x0053);WriteData(Yend);	 
+	
+	WriteComm(0x0020); 
+	WriteData(Xstart); 	
+
+	WriteComm(0x0021);  
+	WriteData(Ystart); 	
+
+	WriteComm(0x0022);  
+}
