@@ -1,6 +1,7 @@
 --cpu Cortex-M3
 "el\startup_stm32f103xe.o"
 "el\main_task.o"
+"el\key.o"
 "el\main.o"
 "el\gpio.o"
 "el\adc.o"

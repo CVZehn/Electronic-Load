@@ -33,7 +33,7 @@
 
 #include "delay.h"
 #include "bsp_ili9325_lcd.h"
- 
+#include "key.h"
 #include "lvgl.h"
 #include "demo.h" 
 #include "main_task.h" 
@@ -110,26 +110,28 @@ int main(void)
   MX_USART1_UART_Init();
   MX_FSMC_Init();
   /* USER CODE BEGIN 2 */
-
+    LL_TIM_EnableIT_UPDATE(TIM2);
+    LL_TIM_EnableCounter(TIM2);
     ILI9325_Init();
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
 	lv_init();
     tft_init();
 #ifdef USE_DEMO
     demo();
 #endif
     main_task();
+  /* USER CODE END 2 */
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-        dis_test();
+      Input_value();
+        delay_ms(1);
         lv_tick_inc(1);		
 		lv_task_handler();
-        delay_ms(1);
   }
   /* USER CODE END 3 */
 }

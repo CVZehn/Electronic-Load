@@ -88,25 +88,25 @@ ARM Macro Assembler    Page 2
    47 00000000         ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
    48 00000000         ; </h>
    49 00000000         
-   50 00000000 00000800 
+   50 00000000 00001600 
                        Stack_Size
-                               EQU              0x800
+                               EQU              0x1600
    51 00000000         
    52 00000000                 AREA             STACK, NOINIT, READWRITE, ALIGN
 =3
    53 00000000         Stack_Mem
                                SPACE            Stack_Size
-   54 00000800         __initial_sp
-   55 00000800         
-   56 00000800         ; <h> Heap Configuration
-   57 00000800         ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
-   58 00000800         ; </h>
-   59 00000800         
-   60 00000800 00000400 
+   54 00001600         __initial_sp
+   55 00001600         
+   56 00001600         ; <h> Heap Configuration
+   57 00001600         ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
+   58 00001600         ; </h>
+   59 00001600         
+   60 00001600 00000400 
                        Heap_Size
                                EQU              0x400
-   61 00000800         
-   62 00000800                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
+   61 00001600         
+   62 00001600                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
 3
    63 00000000         __heap_base
    64 00000000         Heap_Mem
@@ -582,7 +582,7 @@ Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --depend=el\s
 tartup_stm32f103xe.d -oel\startup_stm32f103xe.o -I.\RTE\_EL -ID:\keil\ARM\PACK\
 ARM\CMSIS\5.5.1\CMSIS\Core\Include -ID:\keil\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\
 Device\Include --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION S
-ETA 527" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_HD SETA 1" --list=st
+ETA 528" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_HD SETA 1" --list=st
 
 
 
@@ -612,7 +612,7 @@ Symbol: Stack_Mem
    Uses
       None
 Comment: Stack_Mem unused
-__initial_sp 00000800
+__initial_sp 00001600
 
 Symbol: __initial_sp
    Definitions
@@ -1421,7 +1421,7 @@ Symbol: Heap_Size
    Uses
       At line 64 in file startup_stm32f103xe.s
 Comment: Heap_Size used once
-Stack_Size 00000800
+Stack_Size 00001600
 
 Symbol: Stack_Size
    Definitions

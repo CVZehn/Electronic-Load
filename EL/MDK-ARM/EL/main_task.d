@@ -100,4 +100,5 @@ el/main_task.o: ..\Src\main_task.c ..\Inc\main_task.h ..\lvgl\lvgl.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_rcc.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_utils.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_pwr.h \
-  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_dma.h
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_dma.h ..\Inc\key.h \
+  ..\Inc\gpio.h ..\SYSTEM\delay\delay.h ..\SYSTEM\sys\sys.h

@@ -55,11 +55,33 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
+#define first_keynum    0
+#define second_keynum   1
+#define Third_keynum    2
 
+#define first_keynum    0
+#define second_keynum   1
+#define Third_keynum    2
+
+#define Single_Key1    1
+#define Single_Key2    2
+#define Single_Key3    3
+#define Single_Key4    4
+#define Single_Key5    5
+#define Single_Key6    6
+
+
+#define Long_Key1    11
+#define Long_Key2    22
+#define Long_Key3    33
+#define Long_Key4    44
+#define Long_Key5    55
+#define Long_Key6    66
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
+
 
 /* USER CODE END EM */
 
@@ -71,6 +93,10 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define KEY2_Pin LL_GPIO_PIN_1
+#define KEY2_GPIO_Port GPIOC
+#define KEY1_Pin LL_GPIO_PIN_2
+#define KEY1_GPIO_Port GPIOC
 #define MODESEL_Pin LL_GPIO_PIN_5
 #define MODESEL_GPIO_Port GPIOC
 #define LED1_Pin LL_GPIO_PIN_1
@@ -85,6 +111,14 @@ void Error_Handler(void);
 #define FS1_GPIO_Port GPIOC
 #define DS18B20_Pin LL_GPIO_PIN_9
 #define DS18B20_GPIO_Port GPIOC
+#define KEY6_Pin LL_GPIO_PIN_11
+#define KEY6_GPIO_Port GPIOC
+#define KEY5_Pin LL_GPIO_PIN_12
+#define KEY5_GPIO_Port GPIOC
+#define KEY4_Pin LL_GPIO_PIN_0
+#define KEY4_GPIO_Port GPIOE
+#define KEY3_Pin LL_GPIO_PIN_1
+#define KEY3_GPIO_Port GPIOE
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

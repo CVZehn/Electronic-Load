@@ -7,8 +7,8 @@
 static uint16_t CurrentTextColor   = BLACK;//前景色
 static uint16_t CurrentBackColor   = WHITE;//背景色
 
-__inline void                 WriteComm           ( uint16_t usCmd );
-__inline void                 WriteData          ( uint16_t usData );
+ void                 WriteComm           ( uint16_t usCmd );
+ void                 WriteData          ( uint16_t usData );
 __inline uint16_t             ILI9325_Read_Data           ( void );
 static void                   ILI9325_Delay               ( __IO uint32_t nCount );
 
@@ -19,7 +19,7 @@ static void                   ILI9325_Delay               ( __IO uint32_t nCount
   * @param  usCmd :要写入的命令（表寄存器地址）
   * @retval 无
   */	
-__inline void WriteComm ( uint16_t usCmd )
+ void WriteComm ( uint16_t usCmd )
 {
 	* ( __IO uint16_t * ) ( FSMC_Addr_ILI9325_CMD ) = usCmd;
 	
@@ -31,7 +31,7 @@ __inline void WriteComm ( uint16_t usCmd )
   * @param  usData :要写入的数据
   * @retval 无
   */	
-__inline void WriteData ( uint16_t usData )
+ void WriteData ( uint16_t usData )
 {
 	* ( __IO uint16_t * ) ( FSMC_Addr_ILI9325_DATA ) = usData;
 	

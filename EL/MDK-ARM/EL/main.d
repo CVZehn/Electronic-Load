@@ -40,9 +40,9 @@ el/main.o: ..\Src\main.c ..\Inc\main.h \
   ..\Inc\main.h ..\Inc\dac.h ..\Inc\dma.h ..\Inc\tim.h ..\Inc\usart.h \
   ..\Inc\gpio.h ..\Inc\fsmc.h ..\SYSTEM\delay\delay.h \
   ..\SYSTEM\sys\sys.h ..\Inc\bsp_ili9325_lcd.h ..\Inc\gpio.h \
-  ..\lvgl\lvgl.h ..\lvgl\lv_version.h ..\lvgl\lv_misc\lv_log.h \
-  ..\lvgl\lv_conf.h ..\lvgl\lvgl\lv_conf_checker.h \
-  ..\lvgl\lv_misc\lv_task.h \
+  ..\Inc\key.h ..\lvgl\lvgl.h ..\lvgl\lv_version.h \
+  ..\lvgl\lv_misc\lv_log.h ..\lvgl\lv_conf.h \
+  ..\lvgl\lvgl\lv_conf_checker.h ..\lvgl\lv_misc\lv_task.h \
   D:\keil\ARM\ARMCLANG\Bin\..\include\stdbool.h ..\lvgl\lv_misc\lv_mem.h \
   D:\keil\ARM\ARMCLANG\Bin\..\include\stddef.h ..\lvgl\lv_misc\lv_ll.h \
   ..\lvgl\lv_hal\lv_hal.h ..\lvgl\lv_hal\lv_hal_disp.h \
